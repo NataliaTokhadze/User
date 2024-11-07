@@ -41,3 +41,13 @@ class Post(models.Model):
     
     def __str__(self):
         return f'{self.title}'
+    
+class Event(models.Model):
+    name = models.CharField(max_length=255)
+    time = models.DateTimeField()
+    
+    citizens = models.ManyToManyField('users.Citizen',
+                                      related_name='events')
+    
+    def __str__(self):
+        return f"{self.name} event start at {self.name}"
